@@ -1,0 +1,18 @@
+.deck-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.back {
+  display: inline-flex;
+  background-color: #484747;
+  padding: 5px 10px;
+  border-radius: 0.3em;
+  cursor: pointer;
+
+  font-size: larger;
+  // margin-left: 5px;
+  margin: 7px 5px;
+}

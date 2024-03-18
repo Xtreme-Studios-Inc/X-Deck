@@ -1,0 +1,28 @@
+.deck-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  cursor: pointer;
+  user-select: none;
+
+  margin: 5px;
+
+  width: 100px;
+  min-height: 130px;
+  padding: 15px;
+
+  background-color: #333333;
+
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.3em;
+
+  gap: 10px;
+}
+
+.deck-item:active {
+  background-color: #555555;
+}

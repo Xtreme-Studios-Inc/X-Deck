@@ -1,0 +1,9 @@
+<div class="deck-item">
+  <img
+    *ngIf="item.img"
+    [src]="item.img"
+    style="width: 100px; height: 100px"
+    onerror="this.style.display='none'"
+  />
+  {{ item.displayName }}
+</div>

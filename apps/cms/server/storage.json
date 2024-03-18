@@ -4,12 +4,12 @@
     {
       "name": "games",
       "displayName": "Games",
-      "img": "assets/folder.svg",
+      "img": "http://192.168.3.7:4000/assets/folder.svg",
       "items": [
         {
           "name": "minecraft_launcher",
           "displayName": "Minecraft",
-          "cmd": "C:/Program Files/Docker/Docker/Docker Desktop.exe",
+          "cmd": "\"C:/Program Files/Docker/Docker/Docker Desktop.exe\"",
           "img": "https://www.minecraft.net/content/dam/minecraftnet/franchise/logos/Homepage_Download-Launcher_Creeper-Logo_500x500.png"
         },
         {
@@ -21,7 +21,7 @@
         {
           "name": "steam",
           "displayName": "Steam",
-          "cmd": ["C:/Program Files (x86)/Steam/steam.exe"],
+          "cmd": "\"C:/Program Files (x86)/Steam/steam.exe\"",
           "img": "https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg"
         },
         {
@@ -41,7 +41,7 @@
     {
       "name": "smart_home",
       "displayName": "Smart Home",
-      "img": "assets/folder.svg",
+      "img": "http://192.168.3.7:4000/assets/folder.svg",
       "items": []
     },
     {
@@ -53,14 +53,68 @@
     {
       "name": "docker",
       "displayName": "Docker",
-      "cmd": "C:/Program Files/Docker/Docker/Docker Desktop.exe",
+      "cmd": "\"C:/Program Files/Docker/Docker/Docker Desktop.exe\"",
       "img": "https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/97_Docker_logo_logos-512.png"
     },
     {
       "name": "vscode",
       "displayName": "VSCode",
-      "cmd": "C:/Users/ahlou/AppData/Local/Programs/Microsoft VS Code/Code.exe",
+      "cmd": "\"C:/Users/ahlou/AppData/Local/Programs/Microsoft VS Code/Code.exe\"",
       "img": "https://code.visualstudio.com/assets/images/code-stable.png"
+    },
+    {
+      "name": "notepad",
+      "displayName": "Notepad",
+      "cmd": "C:/Windows/System32/notepad.exe",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png"
+    },
+    {
+      "name": "notepad",
+      "displayName": "Notepad",
+      "cmd": "C:/Windows/System32/notepad.exe",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png"
+    },
+    {
+      "name": "notepad",
+      "displayName": "Notepad",
+      "cmd": "C:/Windows/System32/notepad.exe",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png"
+    },
+    {
+      "name": "notepad",
+      "displayName": "Notepad",
+      "cmd": "C:/Windows/System32/notepad.exe",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png"
+    },
+    {
+      "name": "notepad",
+      "displayName": "Notepad",
+      "cmd": "C:/Windows/System32/notepad.exe",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png"
+    },
+    {
+      "name": "notepad",
+      "displayName": "Notepad",
+      "cmd": "C:/Windows/System32/notepad.exe",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png"
+    },
+    {
+      "name": "notepad",
+      "displayName": "Notepad",
+      "cmd": "C:/Windows/System32/notepad.exe",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png"
+    },
+    {
+      "name": "notepad",
+      "displayName": "Notepad",
+      "cmd": "C:/Windows/System32/notepad.exe",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png"
+    },
+    {
+      "name": "notepad",
+      "displayName": "Notepad",
+      "cmd": "C:/Windows/System32/notepad.exe",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png"
     },
     {
       "name": "notepad",

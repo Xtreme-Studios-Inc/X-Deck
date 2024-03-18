@@ -14,6 +14,19 @@ export function app(): express.Express {
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
+  server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
+    res.header(
+      'Access-Control-Allow-Methods',
+      'GET, POST, PUT, DELETE, OPTIONS'
+    );
+    next();
+  });
+
   const commonEngine = new CommonEngine();
 
   server.set('view engine', 'html');
@@ -28,22 +41,20 @@ export function app(): express.Express {
       maxAge: '1y',
     })
   );
-  // const storage = require('./storage.json');
 
+  // MAIN ENTRY FOR MAIN FUNCTIONALITY
   server.get('/exec/*', (req, res) => {
     // Read all items from storage.json
-    console.log(req.path);
     const pathSegments = req.path.split('/').slice(2);
     const item = getItems(pathSegments);
-    console.log(item);
 
-    // console.log(req.params);
-    // execCommand('start steam://rungameid/427520');
-    console.log(item.cmd);
-    execCommand(item.cmd);
+    if (item.cmd) execCommand(item.cmd);
+
     res.json(item);
-    // Your logic here, for example:
-    // res.json([{ id: 1, name: 'John Doe' }]);
+  });
+
+  server.get('/assets/*', (req, res) => {
+    res.sendFile(join(serverDistFolder, req.path));
   });
 
   // All regular routes use the Angular engine
