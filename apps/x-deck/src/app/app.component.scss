@@ -1,8 +1,33 @@
 .deck-list {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 10px;
+  display: grid;
+  gap: 8px;
+
+  @media only screen and (max-width: 1920px) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media only screen and (max-width: 1600px) {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  @media only screen and (max-width: 1400px) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  @media only screen and (max-width: 1100px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media only screen and (max-width: 700px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+    // gap: 6px;
+  }
 }
 
 .back {
@@ -14,5 +39,6 @@
 
   font-size: larger;
   // margin-left: 5px;
-  margin: 7px 5px;
+  // margin: 7px 5px;
+  margin-bottom: 10px;
 }
