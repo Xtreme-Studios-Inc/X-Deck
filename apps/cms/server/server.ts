@@ -57,6 +57,10 @@ export function app(): express.Express {
     res.sendFile(join(serverDistFolder, req.path));
   });
 
+  server.get('/cms/items', (req, res) => {
+    res.json(getItems([]));
+  });
+
   // All regular routes use the Angular engine
   server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
