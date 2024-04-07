@@ -9,7 +9,7 @@
         {
           "name": "minecraft_launcher",
           "displayName": "Minecraft",
-          "cmd": "\"C:/Program Files/Docker/Docker/Docker Desktop.exe\"",
+          "cmd": "\"C:/XboxGames/Minecraft Launcher/Content/Minecraft.exe\"",
           "img": "https://www.minecraft.net/content/dam/minecraftnet/franchise/logos/Homepage_Download-Launcher_Creeper-Logo_500x500.png"
         },
         {
@@ -49,6 +49,12 @@
       "displayName": "Discord",
       "cmd": "C:/Users/ahlou/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Discord Inc/Discord.lnk",
       "img": "https://static.vecteezy.com/system/resources/previews/006/892/625/non_2x/discord-logo-icon-editorial-free-vector.jpg"
+    },
+    {
+      "name": "spotify",
+      "displayName": "Spotify",
+      "cmd": "powershell.exe Start-Process spotify:",
+      "img": "http://192.168.3.7:4000/assets/spotify.png"
     },
     {
       "name": "docker",
