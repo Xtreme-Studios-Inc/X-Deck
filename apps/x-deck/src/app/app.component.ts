@@ -2,8 +2,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DeckItemComponent } from './deck-item/deck-item.component';
-import { DeckItemService } from './deck-item.service';
-import { Item } from './x-deck-types';
+import { DeckItemService } from './services/deck-item.service';
+import { Item } from './types/x-deck-types';
 import { CommonModule } from '@angular/common';
 
 @Component({

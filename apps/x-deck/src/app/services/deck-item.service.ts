@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Item } from './x-deck-types';
+import { Item } from '../types/x-deck-types';
 
 @Injectable({
   providedIn: 'root',
@@ -12,14 +12,14 @@ export class DeckItemService {
   getData() {
     const cacheBuster = `cacheBuster=${new Date().getTime()}`;
     const data = this.http.get(`http://192.168.3.7:4000/exec/?${cacheBuster}`);
-    console.log(data);
+    // console.log(data);
     return data;
   }
 
   exec(path: string): Observable<Item> {
-    console.log(path);
+    // console.log(path);
     const data = this.http.get('http://192.168.3.7:4000/exec/' + path);
-    console.log(data);
+    // console.log(data);
     return data as Observable<Item>;
   }
 }

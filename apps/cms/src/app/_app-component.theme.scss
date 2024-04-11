@@ -1,0 +1,10 @@
+@use "@angular/material" as mat;
+
+@mixin app-component-theme($theme) {
+  @include x-component-themes($theme);
+
+  .app-root {
+    // color: mat.get-color-from-palette($theme, text);
+    // background-color: mat.get-color-from-palette($theme, background);
+  }
+}

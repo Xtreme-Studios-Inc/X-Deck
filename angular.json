@@ -12,7 +12,7 @@
       },
       "root": "apps/cms",
       "sourceRoot": "apps/cms/src",
-      "prefix": "app",
+      "prefix": "x",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -31,7 +31,8 @@
             "prerender": true,
             "ssr": {
               "entry": "apps/cms/server/server.ts"
-            }
+            },
+            "preserveSymlinks": true
           },
           "configurations": {
             "production": {

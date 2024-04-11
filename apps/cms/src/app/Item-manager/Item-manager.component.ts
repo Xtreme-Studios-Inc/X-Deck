@@ -4,13 +4,16 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ItemManagerService } from './services/item-manager.service';
 
 @Component({
-  selector: 'app-item-manager',
+  selector: 'x-item-manager',
   standalone: true,
   imports: [CommonModule, HttpClientModule],
   providers: [ItemManagerService],
   templateUrl: './Item-manager.component.html',
   styleUrl: './Item-manager.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'x-item-manager',
+  },
 })
 export class ItemManagerComponent implements OnInit {
   constructor(private itemManagerService: ItemManagerService) {}

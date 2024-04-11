@@ -1,0 +1,144 @@
+@use "@angular/material" as mat;
+
+@function color-config() {
+  $primary-palette: (
+    50: #e4e5e6,
+    100: #bbbfc1,
+    200: #8e9497,
+    300: #61696d,
+    400: #3f484e,
+    500: #1d282f,
+    600: #1a242a,
+    700: #151e23,
+    800: #11181d,
+    900: #0a0f12,
+
+    contrast: (
+      50: rgba(black, 0.87),
+      100: rgba(black, 0.87),
+      200: rgba(black, 0.87),
+      300: white,
+      400: white,
+      500: white,
+      600: white,
+      700: white,
+      800: white,
+      900: white,
+    ),
+  );
+  // 2f3f46
+  $accent-palette: (
+    50: #cae5f3,
+    100: #9fc1d0,
+    200: #9eb5c0,
+    300: #8497a0,
+    400: #778790,
+    500: #525e63,
+    600: #3c4549,
+    700: #32383b,
+    800: #212528,
+    900: #151a1c,
+
+    contrast: (
+      50: rgba(black, 0.87),
+      100: rgba(black, 0.87),
+      200: rgba(black, 0.87),
+      300: white,
+      400: white,
+      500: white,
+      600: white,
+      700: white,
+      800: white,
+      900: white,
+    ),
+  );
+
+  // $secondary-palette: (
+  //   50: #e8eaf6,
+  //   100: #c5cae9,
+  //   200: #9fa8da,
+  //   300: #ffffff,
+  //   400: #7986cb,
+  //   500: #2a383f,
+  //   600: #7986cb,
+  //   700: #7986cb,
+  //   800: #7986cb,
+  //   900: #7986cb,
+
+  //   contrast: (50: rgba(black, 0.87),
+  //     100: rgba(black, 0.87),
+  //     200: rgba(black, 0.87),
+  //     300: white,
+  //     400: white,
+  //     500: white,
+  //     600: white,
+  //     700: white,
+  //     800: white,
+  //     900: white,
+  //   ),
+  // );
+
+  $warn-palette: (
+    50: #ffebee,
+    100: #ffcdd2,
+    200: #ef9a9a,
+    300: #e57373,
+    400: #ef5350,
+    500: #f44336,
+    600: #e53935,
+    700: #d32f2f,
+    800: #c62828,
+    900: #b71c1c,
+
+    contrast: (
+      50: rgba(black, 0.87),
+      100: rgba(black, 0.87),
+      200: rgba(black, 0.87),
+      300: rgba(black, 0.87),
+      400: white,
+      500: white,
+      600: white,
+      700: white,
+      800: white,
+      900: white,
+    ),
+  );
+
+  $green-palette: (
+    50: #e8f5e9,
+    100: #c8e6c9,
+    200: #a5d6a7,
+    300: #81c784,
+    400: #66bb6a,
+    500: #4caf50,
+    600: #43a047,
+    700: #388e3c,
+    800: #2e7d32,
+    900: #1b5e20,
+
+    contrast: (
+      50: rgba(black, 0.87),
+      100: rgba(black, 0.87),
+      200: rgba(black, 0.87),
+      300: rgba(black, 0.87),
+      400: rgba(black, 0.87),
+      500: white,
+      600: white,
+      700: white,
+      800: white,
+      900: white,
+    ),
+  );
+
+  // $green-palette: mat.$green;
+
+  $theme-color: (
+    primary: mat.define-palette($primary-palette),
+    // secondary: mat.define-palette($secondary-palette),
+    accent: mat.define-palette($accent-palette),
+    warn: mat.define-palette($warn-palette),
+    success: mat.define-palette($green-palette),
+  );
+
+  @return $theme-color;
+}
