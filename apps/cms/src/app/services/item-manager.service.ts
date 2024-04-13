@@ -28,8 +28,8 @@ export class ItemManagerService {
   }
 
   getAllItems() {
-    // const cacheBuster = `cacheBuster=${new Date().getTime()}`;
-    const data = this.http.get(`${BASE_URL}/items`);
+    const cacheBuster = `cacheBuster=${new Date().getTime()}`;
+    const data = this.http.get(`${BASE_URL}/items?${cacheBuster}`);
     // const data = this.http.get(`/cms/items?${cacheBuster}`);
     // console.log(data);
     return data as Observable<Item>;

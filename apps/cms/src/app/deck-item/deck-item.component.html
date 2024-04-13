@@ -3,4 +3,11 @@
   <img *ngIf="item.img" [src]="item.img" onerror="this.style.display='none'" />
   {{ item.displayName }}
 </div>
+} @else {
+<div class="deck-item">
+  <div class="img-placeholder">
+    <x-icon icon="image" xColor="#fff" xSize="lg"></x-icon>
+  </div>
+  <div class="placeholder-text"></div>
+</div>
 }

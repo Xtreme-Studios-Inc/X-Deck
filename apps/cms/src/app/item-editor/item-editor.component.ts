@@ -12,6 +12,7 @@ import {
   BaseComponentModule,
   FormComponent,
   FormSubmitEvent,
+  NavBarConfig,
 } from '@xtreme-studios/x-components';
 import { Item } from '../types/x-deck-types';
 import { ActivatedRoute } from '@angular/router';
@@ -31,6 +32,25 @@ export class ItemEditorComponent implements OnInit, AfterViewInit {
   item: Item | null = null;
 
   @ViewChild(FormComponent) form?: FormComponent;
+
+  navConfig: NavBarConfig = {
+    navBarTitle: {
+      title: 'Edit Item',
+      titleBarLink: '/',
+    },
+    actionItems: [
+      {
+        label: 'Save',
+        onClick: () => {
+          // this.updateItem(this.form?.form);
+        },
+        icon: {
+          name: 'plus',
+          size: 'md',
+        },
+      },
+    ],
+  };
 
   constructor(
     private activatedRoute: ActivatedRoute,

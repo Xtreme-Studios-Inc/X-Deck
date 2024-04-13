@@ -23,6 +23,7 @@
 
   gap: 12px;
 
+  .img-placeholder,
   img {
     width: 100px;
     height: 100px;
@@ -31,11 +32,19 @@
   @media only screen and (max-width: 600px) {
     width: 100%;
     // gap: auto;
-
+    .img-placeholder,
     img {
       width: 85px;
       height: 85px;
     }
+  }
+
+  .placeholder-text {
+    background-color: currentColor;
+    width: 60%;
+    height: 16px;
+    opacity: 0.8;
+    border-radius: 0.2em;
   }
 }
 
