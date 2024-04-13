@@ -1,18 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ItemManagerComponent } from './Item-manager/Item-manager.component';
+import { ItemManagerComponent } from './Item-manager/item-manager.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ButtonComponent } from '@xtreme-studios/x-components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    ItemManagerComponent,
-    HttpClientModule,
-    ButtonComponent,
-  ],
+  imports: [RouterOutlet, ItemManagerComponent, HttpClientModule],
   templateUrl: './app.component.html',
   host: {
     class: 'app-root',

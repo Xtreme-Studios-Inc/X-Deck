@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from '../src/main.server';
 import { execCommand } from './cli-util';
-import { getItems } from './storage-util';
+import { getItem, getItems, updateItem } from './storage-util';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -26,6 +26,7 @@ export function app(): express.Express {
     );
     next();
   });
+  server.use(express.json());
 
   const commonEngine = new CommonEngine();
 
@@ -56,6 +57,19 @@ export function app(): express.Express {
 
   server.get('/cms/items', (req, res) => {
     res.json(getItems([]));
+  });
+
+  server.get('/cms/item/*', (req, res) => {
+    const pathSegments = req.path.split('/').slice(3);
+    res.json(getItem(pathSegments[0]));
+  });
+
+  server.put('/cms/item/*', (req, res) => {
+    // const pathSegments = req.path.split('/').slice(3);
+    // console.log('PATH', pathSegments);
+    // console.log('BODY', req.body);
+    // res.json(req.body);
+    res.json(updateItem(req.body));
   });
 
   // All regular routes use the Angular engine

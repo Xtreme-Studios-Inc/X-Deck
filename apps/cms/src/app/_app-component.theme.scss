@@ -1,7 +1,13 @@
 @use "@angular/material" as mat;
 
+@import "./item-manager/item-manager.theme";
+@import "./item-editor/item-editor.theme";
+
 @mixin app-component-theme($theme) {
   @include x-component-themes($theme);
+
+  @include item-manager-theme($theme);
+  @include item-editor-theme($theme);
 
   .app-root {
     // color: mat.get-color-from-palette($theme, text);

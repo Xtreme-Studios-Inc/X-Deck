@@ -1,0 +1,19 @@
+<x-navbar></x-navbar>
+
+<x-panel flexDiretion="column">
+  <x-panel container="contained" class="item-view">
+    <x-deck-item [item]="this.item"></x-deck-item>
+  </x-panel>
+  <x-panel class="item-detail-editor" flexDiretion="column">
+    <ng-container panel-content>
+      <x-form (onSubmit)="updateItem($event)">
+        <x-input type="text" label="name"></x-input>
+        <x-input type="text" label="displayName"></x-input>
+        <x-input type="text" label="cmd"></x-input>
+        <x-input type="text" label="img"></x-input>
+
+        <x-button type="submit">Save</x-button>
+      </x-form>
+    </ng-container>
+  </x-panel>
+</x-panel>

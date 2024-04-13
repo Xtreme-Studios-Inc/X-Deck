@@ -1,9 +1,18 @@
 import { Routes } from '@angular/router';
-import { ItemManagerComponent } from './Item-manager/Item-manager.component';
+import { ItemManagerComponent } from './Item-manager/item-manager.component';
+import { ItemEditorComponent } from './item-editor/item-editor.component';
 
 export const routes: Routes = [
   {
-    path: 'items/edit',
+    path: '',
     component: ItemManagerComponent,
+  },
+  {
+    path: 'item/:id',
+    component: ItemEditorComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];
