@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from '../types/x-deck-types';
-
-const BASE_URL = 'http://192.168.3.7:4000/cms';
+import { env } from '../../environments/env';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +12,7 @@ export class DeckItemService {
 
   getData() {
     const cacheBuster = `cacheBuster=${new Date().getTime()}`;
-    const data = this.http.get(`${BASE_URL}/items?${cacheBuster}`);
+    const data = this.http.get(`${env.apiUrl}/cms/items?${cacheBuster}`);
     return data;
   }
 
@@ -21,9 +20,8 @@ export class DeckItemService {
     if (path === '') {
       throw new Error('Path cannot be empty');
     }
-    // console.log(path);
-    const data = this.http.get('http://192.168.3.7:4000/exec/' + path);
-    // console.log(data);
+    const data = this.http.get(`${env.apiUrl}/exec/` + path);
+
     return data as Observable<Item>;
   }
 }

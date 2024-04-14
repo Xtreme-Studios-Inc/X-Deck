@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { env } from '../../environments/env';
 
 @Component({
   selector: 'x-deck-item',
@@ -12,4 +13,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class DeckItemComponent {
   @Input()
   item: any = null;
+
+  populateEnv(url: string) {
+    return url.replace('${apiUrl}', env.apiUrl);
+  }
 }

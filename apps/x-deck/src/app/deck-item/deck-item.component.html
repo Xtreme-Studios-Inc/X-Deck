@@ -1,4 +1,8 @@
 <div class="deck-item">
-  <img *ngIf="item.img" [src]="item.img" onerror="this.style.display='none'" />
+  <img
+    *ngIf="item.img"
+    [src]="populateEnv(item.img)"
+    onerror="this.style.display='none'"
+  />
   {{ item.displayName }}
 </div>
