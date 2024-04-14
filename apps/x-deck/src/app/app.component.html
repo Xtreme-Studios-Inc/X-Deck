@@ -3,8 +3,8 @@
   <span class="title">{{ currentItem?.displayName }}</span>
 </div>
 
-<div class="deck-list">
+<x-grid>
   @for (item of subItems; track $index) {
   <x-deck-item [item]="item" (click)="onItemClicked(item)"></x-deck-item>
   }
-</div>
+</x-grid>

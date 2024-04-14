@@ -1,0 +1,19 @@
+@use "@angular/material" as mat;
+
+@mixin app-component-theme($theme) {
+  .app-root {
+    .back {
+      display: inline-flex;
+      background-color: #484747;
+      padding: 5px 10px;
+      border-radius: 0.3em;
+      cursor: pointer;
+      user-select: none;
+
+      font-size: larger;
+      // margin-left: 5px;
+      // margin: 7px 5px;
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -120,7 +120,8 @@
             "prerender": true,
             "ssr": {
               "entry": "apps/x-deck/server.ts"
-            }
+            },
+            "preserveSymlinks": true
           },
           "configurations": {
             "production": {

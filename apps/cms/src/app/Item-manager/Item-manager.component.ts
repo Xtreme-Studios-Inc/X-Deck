@@ -8,7 +8,10 @@ import {
   OnInit,
 } from '@angular/core';
 import { ItemManagerService } from '../services/item-manager.service';
-import { BaseComponentModule } from '@xtreme-studios/x-components';
+import {
+  BaseComponentModule,
+  NavBarConfig,
+} from '@xtreme-studios/x-components';
 import { DeckItemComponent } from '../deck-item/deck-item.component';
 import { Item } from '../types/x-deck-types';
 import { Router, RouterModule } from '@angular/router';
@@ -33,6 +36,24 @@ export class ItemManagerComponent implements OnInit {
   @Input()
   items: Item[] = [];
 
+  navConfig: NavBarConfig = {
+    navBarTitle: {
+      title: 'X-Deck Item Manager',
+    },
+    actionItems: [
+      {
+        label: 'Create Item',
+        onClick: () => {
+          this.createItem();
+        },
+        icon: {
+          name: 'plus',
+          size: 'sm',
+        },
+      },
+    ],
+  };
+
   constructor(
     private itemManagerService: ItemManagerService,
     private router: Router,
@@ -41,6 +62,10 @@ export class ItemManagerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllItems();
+  }
+
+  createItem() {
+    this.router.navigate(['/new']);
   }
 
   getAllItems() {

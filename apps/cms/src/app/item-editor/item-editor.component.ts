@@ -15,7 +15,7 @@ import {
   NavBarConfig,
 } from '@xtreme-studios/x-components';
 import { Item } from '../types/x-deck-types';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ItemManagerService } from '../services/item-manager.service';
 
 @Component({
@@ -35,18 +35,32 @@ export class ItemEditorComponent implements OnInit, AfterViewInit {
 
   navConfig: NavBarConfig = {
     navBarTitle: {
-      title: 'Edit Item',
+      title: '< Edit Item',
       titleBarLink: '/',
     },
     actionItems: [
       {
         label: 'Save',
         onClick: () => {
-          // this.updateItem(this.form?.form);
+          this.updateItem();
         },
         icon: {
-          name: 'plus',
-          size: 'md',
+          name: 'floppy-disk',
+          size: 'sm',
+          style: 'thin',
+          color: 'green',
+        },
+      },
+      {
+        label: 'Delete',
+        onClick: () => {
+          this.deleteItem();
+        },
+        icon: {
+          name: 'trash',
+          size: 'sm',
+          style: 'solid',
+          color: 'red',
         },
       },
     ],
@@ -54,6 +68,7 @@ export class ItemEditorComponent implements OnInit, AfterViewInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private itemManager: ItemManagerService,
     private cd: ChangeDetectorRef
   ) {}
@@ -74,10 +89,36 @@ export class ItemEditorComponent implements OnInit, AfterViewInit {
     this.form?.setFormValues(this.item ?? {});
   }
 
-  updateItem(form: FormSubmitEvent) {
-    this.itemManager.updateItem(form as Item).subscribe((item) => {
+  updateItem(form?: FormSubmitEvent) {
+    if (
+      this.activatedRoute.snapshot.url
+        .map((segment) => segment.path)
+        .join('/') === 'new'
+    ) {
+      this.itemManager
+        .createItem(this.form?.getFormValues() as Item)
+        .subscribe((item) => {
+          this.item = item;
+          console.log(item);
+          this.router.navigate(['/item', item.name]);
+        });
+    }
+
+    let detail: Item;
+
+    if (!form) {
+      detail = this.form?.getFormValues() as Item;
+    } else detail = form as Item;
+
+    this.itemManager.updateItem(detail).subscribe((item) => {
       this.item = item;
       this.cd.markForCheck();
+    });
+  }
+
+  deleteItem() {
+    this.itemManager.deleteItem(this.item as Item).subscribe(() => {
+      this.router.navigate(['/']);
     });
   }
 }

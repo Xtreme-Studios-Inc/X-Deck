@@ -1,11 +1,15 @@
 @use "@angular/material" as mat;
 
 @mixin item-editor-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map-get($color-config, primary);
+  $accent-palette: map-get($color-config, accent);
+
   .x-item-editor {
     overflow: hidden;
 
     .item-view {
-      background-color: black;
+      background-color: mat.get-color-from-palette($primary-palette, 900);
       box-sizing: border-box;
       padding: 10px;
       height: 100%;
@@ -14,6 +18,12 @@
       x-deck-item {
         width: 100%;
         align-self: flex-start;
+        .deck-item {
+          cursor: default;
+        }
+        .deck-item:active {
+          background-color: mat.get-color-from-palette($primary-palette, 800);
+        }
       }
     }
 

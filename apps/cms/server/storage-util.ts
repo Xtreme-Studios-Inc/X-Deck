@@ -12,6 +12,8 @@ type Item = {
   items?: Item[] | null;
 };
 
+const STORAGE = 'apps/cms/server/storage.json';
+
 export function findObjectByKeyValue(
   obj: any,
   key: string,
@@ -37,8 +39,11 @@ export function findObjectByKeyValue(
 }
 
 export function getStorage() {
-  const rawData = fs.readFileSync('apps/cms/server/storage.json', 'utf8');
+  const rawData = fs.readFileSync(STORAGE, 'utf8');
   const jsonData = JSON.parse(rawData);
+  if (!jsonData) {
+    throw new Error('Storage file is empty');
+  }
   return jsonData;
 }
 
@@ -48,9 +53,6 @@ export function getItem(itemId: string) {
   }
 
   const root = getStorage();
-  if (!root) {
-    throw new Error(`Item not found: ${itemId}`);
-  }
 
   const item = findObjectByKeyValue(root, 'name', itemId);
   if (!item) {
@@ -64,9 +66,6 @@ export function getItem(itemId: string) {
 
 export function updateItem(item: Item) {
   const root = getStorage();
-  if (!root) {
-    throw new Error(`Item not found: ${item.name}`);
-  }
 
   const itemToUpdate = findObjectByKeyValue(root, 'name', item.name);
   if (!itemToUpdate) {
@@ -79,9 +78,47 @@ export function updateItem(item: Item) {
   itemToUpdate.path = item.path;
   itemToUpdate.items = item.items;
 
-  fs.writeFileSync('apps/cms/server/storage.json', JSON.stringify(root));
+  fs.writeFileSync(STORAGE, JSON.stringify(root));
 
   return itemToUpdate;
+}
+
+export function createItem(item: Item) {
+  const root = getStorage();
+
+  const existingItem = findObjectByKeyValue(root, 'name', item.name);
+  if (existingItem) {
+    throw new Error(`Item already exists: ${item.name}`);
+  }
+
+  root.items.push(item);
+
+  fs.writeFileSync(STORAGE, JSON.stringify(root));
+
+  return item;
+}
+
+function filterOutItem(item: Item, nameToRemove: string) {
+  if (item.items) {
+    item.items = item.items
+      .filter((subItem) => subItem.name !== nameToRemove)
+      .map((subItem) => filterOutItem(subItem, nameToRemove));
+  }
+
+  // Return the item, which will be used in the map operation above
+  return item;
+}
+
+export function deleteItem(item: Item) {
+  const root: Item = getStorage();
+  if (!root) {
+    throw new Error(`Item not found: ${item.name}`);
+  }
+
+  // Filter out the item to delete
+  const updatedItems = filterOutItem(root, item.name);
+  fs.writeFileSync(STORAGE, JSON.stringify(updatedItems));
+  return updatedItems;
 }
 
 export function getItems(pathSegments: string[]) {

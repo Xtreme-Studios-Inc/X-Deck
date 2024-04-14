@@ -5,14 +5,24 @@ import { DeckItemComponent } from './deck-item/deck-item.component';
 import { DeckItemService } from './services/deck-item.service';
 import { Item } from './types/x-deck-types';
 import { CommonModule } from '@angular/common';
+import { GridComponent } from '@xtreme-studios/x-components';
+// import { BaseComponentModule } from '@xtreme-studios/x-components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HttpClientModule, DeckItemComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HttpClientModule,
+    DeckItemComponent,
+    GridComponent,
+  ],
   providers: [DeckItemService],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  host: {
+    class: 'app-root',
+  },
 })
 export class AppComponent implements OnInit {
   title = 'X-Deck';

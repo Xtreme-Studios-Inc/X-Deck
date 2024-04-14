@@ -5,7 +5,13 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from '../src/main.server';
 import { execCommand } from './cli-util';
-import { getItem, getItems, updateItem } from './storage-util';
+import {
+  createItem,
+  deleteItem,
+  getItem,
+  getItems,
+  updateItem,
+} from './storage-util';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -44,7 +50,14 @@ export function app(): express.Express {
   server.get('/exec/*', (req, res) => {
     // Read all items from storage.json
     const pathSegments = req.path.split('/').slice(2);
-    const item = getItems(pathSegments);
+    // console.log(pathSegments);
+    if (pathSegments.length === 0) {
+      return;
+    }
+    // console.log('test', pathSegments);
+    // const item = getItems(pathSegments);
+    const item = getItem(pathSegments[1]);
+    // console.log(test);
 
     if (item.cmd) execCommand(item.cmd);
 
@@ -61,15 +74,43 @@ export function app(): express.Express {
 
   server.get('/cms/item/*', (req, res) => {
     const pathSegments = req.path.split('/').slice(3);
-    res.json(getItem(pathSegments[0]));
+    const item = getItem(pathSegments[0]);
+    if (!item) {
+      res.status(404).send('Item not found');
+      return;
+    }
+    res.json(item);
   });
 
   server.put('/cms/item/*', (req, res) => {
-    // const pathSegments = req.path.split('/').slice(3);
-    // console.log('PATH', pathSegments);
-    // console.log('BODY', req.body);
-    // res.json(req.body);
+    const item = updateItem(req.body);
+    if (!item) {
+      res.status(404).send('Item not found');
+      return;
+    }
     res.json(updateItem(req.body));
+  });
+
+  server.post('/cms/new', (req, res) => {
+    const item = createItem(req.body);
+    if (!item) {
+      res.status(404).send('Item not found');
+      return;
+    }
+    res.json(updateItem(req.body));
+  });
+
+  server.delete('/cms/item/*', (req, res) => {
+    const pathSegments = req.path.split('/').slice(3);
+    const item = deleteItem(getItem(pathSegments[0]));
+
+    // const item = deleteItem(req.body);
+
+    if (!item) {
+      res.status(404).send('Item not found');
+      return;
+    }
+    res.json(item);
   });
 
   // All regular routes use the Angular engine

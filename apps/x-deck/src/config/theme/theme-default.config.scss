@@ -1,0 +1,14 @@
+@import "./color.config.scss";
+@import "./typography.config.scss";
+
+@function get-theme() {
+  $theme: mat.define-dark-theme(
+    (
+      color: color-config(),
+      typography: typography-config(),
+      density: 0,
+    )
+  );
+
+  @return $theme;
+}

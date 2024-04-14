@@ -27,6 +27,18 @@ export class ItemManagerService {
     return data as Observable<Item>;
   }
 
+  createItem(item: Item) {
+    const data = this.http.post<Item>(`${BASE_URL}/new`, {
+      ...item,
+    });
+    return data as Observable<Item>;
+  }
+
+  deleteItem(item: Item) {
+    const data = this.http.delete<Item>(`${BASE_URL}/item/${item.name}`);
+    return data as Observable<Item>;
+  }
+
   getAllItems() {
     const cacheBuster = `cacheBuster=${new Date().getTime()}`;
     const data = this.http.get(`${BASE_URL}/items?${cacheBuster}`);

@@ -45,25 +45,3 @@ $theme: get-theme();
 @include app-component-theme($theme);
 
 /* You can add global styles to this file, and also import other style files */
-
-html {
-  color: #ececec;
-  background-color: #212121;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-}
-
-body {
-  display: block;
-  margin: 0px;
-}
-
-html,
-body {
-  overflow: hidden;
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}

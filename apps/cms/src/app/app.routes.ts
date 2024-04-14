@@ -12,6 +12,10 @@ export const routes: Routes = [
     component: ItemEditorComponent,
   },
   {
+    path: 'new',
+    component: ItemEditorComponent,
+  },
+  {
     path: '**',
     redirectTo: '',
   },
