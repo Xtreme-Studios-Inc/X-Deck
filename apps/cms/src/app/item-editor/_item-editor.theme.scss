@@ -16,5 +16,13 @@
         align-self: flex-start;
       }
     }
+
+    .item-detail-editor {
+      x-form {
+        x-textarea {
+          margin-bottom: 15px;
+        }
+      }
+    }
   }
 }

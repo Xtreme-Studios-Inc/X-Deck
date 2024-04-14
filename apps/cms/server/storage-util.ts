@@ -4,6 +4,7 @@ import fs from 'fs';
 type Item = {
   name: string;
   displayName?: string | null;
+  description?: string | null;
   cmd?: string | null;
   img?: string | null;
   //folderlike

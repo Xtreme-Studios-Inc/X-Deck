@@ -7,10 +7,11 @@
   <x-panel class="item-detail-editor" flexDiretion="column">
     <ng-container panel-content>
       <x-form (onSubmit)="updateItem($event)">
-        <x-input type="text" label="name"></x-input>
-        <x-input type="text" label="displayName"></x-input>
-        <x-input type="text" label="cmd"></x-input>
-        <x-input type="text" label="img"></x-input>
+        <x-input type="text" label="Name" name="name"></x-input>
+        <x-input type="text" label="Display Name" name="displayName"></x-input>
+        <x-textarea label="Description" name="description"></x-textarea>
+        <x-input type="text" label="Command" name="cmd"></x-input>
+        <x-input type="text" label="Image" name="img"></x-input>
 
         <x-button type="submit">Save</x-button>
       </x-form>

@@ -30,18 +30,14 @@ export class ItemManagerService {
   getAllItems() {
     const cacheBuster = `cacheBuster=${new Date().getTime()}`;
     const data = this.http.get(`${BASE_URL}/items?${cacheBuster}`);
-    // const data = this.http.get(`/cms/items?${cacheBuster}`);
-    // console.log(data);
     return data as Observable<Item>;
   }
 
   getCurrentItem() {
-    console.log('current item', this.currentItem);
     return this.currentItem;
   }
 
   setCurrentItem(item: Item) {
-    console.log('setting item', item);
     this.currentItem = item;
   }
 }
